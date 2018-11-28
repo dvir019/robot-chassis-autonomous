@@ -15,6 +15,12 @@ package org.usfirst.frc.team4320.robot;
  */
 public class RobotMap {
 
-	public static int LEFT_TALON = 0;
-	public static int RIGHT_TALON = 1;
+	// Chassis - PWM
+	public static final int LEFT_TALON = 0;
+	public static final int RIGHT_TALON = 1;
+	
+	
+	// OI - Driver station
+	public static final int LEFT_JOYSTICK = 1;
+	public static final int RIGHT_JOYSTICK = 2;
 }

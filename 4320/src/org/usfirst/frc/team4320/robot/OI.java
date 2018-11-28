@@ -7,36 +7,55 @@
 
 package org.usfirst.frc.team4320.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	//// CREATING BUTTONS
-	// One type of button is a joystick button which is any button on a
-	//// joystick.
-	// You create one by telling it which joystick it's on and which button
-	// number it is.
-	// Joystick stick = new Joystick(port);
-	// Button button = new JoystickButton(stick, buttonNumber);
+	private static OI instance;
+	
+	private Joystick leftJoystick;
+	private Joystick rightJoystick;
+	
+	// Constructor and SingleTon
 
-	// There are a few additional built in buttons you can use. Additionally,
-	// by subclassing Button you can create custom triggers and bind those to
-	// commands the same as any other Button.
+	/**
+	 * The constructor of the class
+	 */
+	private OI() {
+		leftJoystick=new Joystick(RobotMap.LEFT_JOYSTICK);
+		rightJoystick = new Joystick(RobotMap.RIGHT_JOYSTICK);
+	}
 
-	//// TRIGGERING COMMANDS WITH BUTTONS
-	// Once you have a button, it's trivial to bind it to a button in one of
-	// three ways:
+	/**
+	 * SingleTon for the class
+	 * 
+	 * @return An instance of the class
+	 */
+	public static OI getInstance() {
+		if (instance == null)
+			instance = new OI();
+		return instance;
+	}
 
-	// Start the command when the button is pressed and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenPressed(new ExampleCommand());
-
-	// Run the command while the button is being held down and interrupt it once
-	// the button is released.
-	// button.whileHeld(new ExampleCommand());
-
-	// Start the command when the button is released and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenReleased(new ExampleCommand());
+	// Methods
+	
+	/**
+	 * Get the Y axis coordinate of the left joystick
+	 * @return The Y axis coordinate of the left joystick
+	 */
+	public double getLeftJoystickX() {
+		return leftJoystick.getX();
+	}
+	
+	/**
+	 * Get the Y axis coordinate of the right joystick
+	 * @return The Y axis coordinate of the right joystick
+	 */
+	public double getRightJoystickX() {
+		return rightJoystick.getX();
+	}
 }
